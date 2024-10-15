@@ -25,7 +25,7 @@ python3 TeloSearchLR.py -f SRR7594465.fasta -k 4 -K 20 -m 1 -M 100 -n 4000
 
 ## Commands and options
 ```text
-Usage:   python TeloSearchLR.py [options]
+Usage:   python {1} [options]
                 
 Options:
   Run modes:
@@ -38,8 +38,8 @@ Options:
   Required for occupancy and exhaustive modes:
     -k --k_value            INT    shortest repeat period (>0) to consider by TideHunter
     -K --K_value            INT    longest repeat period (>=k) to consider by TideHunter
-    -m --mth_pattern        INT    most frequent m-th motif pattern (>0)
-    -M --Mth_pattern        INT    most frequent M-th motif pattern (>m)
+    -m --mth_pattern        INT    most frequent motif to plot (>0)
+    -M --Mth_pattern        INT    least frequent motif to plot (>m)
   Required for single-motif mode:
     -T --TideHunter         STR    a TideHunter (>=v1.5.4) tabular output
   Other options:

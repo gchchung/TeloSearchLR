@@ -21,7 +21,7 @@ docker run telosearchlr_v1.0.0 -h
 ```
 
 ### From source
-Clone this GitHub repo, then run the TeloSearch.py script and display the help message.
+Clone this GitHub repo, then run the TeloSearchLR.py script and display the help message.
 ```bash
 # clone repo
 git clone https://github.com/gchchung/TeloSearchLR.git

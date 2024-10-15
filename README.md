@@ -12,7 +12,8 @@ conda install _________________
 
 ## Usage
 
-To get started, download a test dataset - a genomic sequencing library from Caenorhabditis elegans - generated using PacBio.
+To get started, download a test dataset - a genomic sequencing library from Caenorhabditis elegans generated using PacBio (using fasterq-dump from [sra-tools](https://github.com/ncbi/sra-tools)).
+sra-tools 
 ```bash
 # Download a test Caenorhabditis elegans PacBio long-read dataset from SRA using sra-tools
 fasterq-dump --fasta SRR7594465

@@ -18,7 +18,7 @@ To get started, download a test dataset - a genomic sequencing library from Caen
 fasterq-dump --fasta SRR7594465
 ```
 Wait a bit until the download is complete, then run TeloSearch.py.
-```python
+```bash
 # Run TeloSearchLR
 python3 TeloSearchLR.py -f SRR7594465.fasta -k 4 -K 20 -m 1 -M 100 -n 4000
 ```

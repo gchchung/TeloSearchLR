@@ -12,11 +12,14 @@ conda install _________________
 
 ## Usage
 
+To get started, download a test dataset - a genomic sequencing library from Caenorhabditis elegans - generated using PacBio.
 ```bash
 # Download a test Caenorhabditis elegans PacBio long-read dataset from SRA using sra-tools
 fasterq-dump --fasta SRR7594465
 ```
+Wait a bit until the download is complete, then run TeloSearch.py.
 ```python
+# Run TeloSearchLR
 python3 TeloSearchLR.py -f SRR7594465.fasta -k 4 -K 20 -m 1 -M 100 -n 4000
 
 ```

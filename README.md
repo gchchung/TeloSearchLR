@@ -77,11 +77,10 @@ Options:
 Pull requests are welcome. For major changes, please open an issue first
 to discuss what you would like to change.
 
-Please make sure to update tests as appropriate.
 
 ## License
 
-NYU License
+[NYU License](https://github.com/gchchung/TeloSearchLR/blob/main/LICENSE)
 
 ## References
 Please cite this repository. A preprint describing this algorithm will be posted shortly.

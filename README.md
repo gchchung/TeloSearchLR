@@ -25,7 +25,7 @@ python3 TeloSearchLR.py -f SRR7594465.fasta -k 4 -K 20 -m 1 -M 100 -n 4000
 
 ## Commands and options
 ```text
-Usage:   python {1} [options]
+Usage:   python TeloSearchLR.py [options]
                 
 Options:
   Run modes:

@@ -33,8 +33,8 @@ Options:
   Required for occupancy and exhaustive modes:
     -k --k_value            INT    shortest repeat period (>0) to consider by TideHunter
     -K --K_value            INT    longest repeat period (≥k) to consider by TideHunter
-    -m --mth_pattern        INT    most frequent motif to plot (>0)
-    -M --Mth_pattern        INT    least frequent motif to plot (≥m)
+    -m --mth_pattern        INT    rank of the most frequent motif to plot (>0)
+    -M --Mth_pattern        INT    rank of the least frequent motif to plot (≥m)
   Required for single-motif mode:
     -T --TideHunter         STR    a TideHunter (>=v1.5.4) tabular output
   Other options:

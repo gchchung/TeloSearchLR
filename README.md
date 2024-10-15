@@ -4,23 +4,43 @@ TeloSearchLR (**telo**mere **search** using **l**ong sequencing **r**eads) is a 
 
 ## Installation
 
-Using conda,
-
+### Conda (to do)
+Install using conda.
 ```bash
 conda install _________________
 ```
+
+### Docker
+Pull the TeloSearchLR image from Docker repository ```gchchung/telosearchlr```.
+```text
+docker pull gchchung/telosearchlr:telosearchlr_v1.0.0
+```
+Then display the help message.
+```text
+docker run telosearchlr_v1.0.0 -h
+```
+
+### From source
+Clone this GitHub repo, then run the TeloSearch.py script and display the help message.
+```bash
+# clone repo
+git clone https://github.com/gchchung/TeloSearchLR.git
+cd TeloSearchLR
+
+# run script
+python TeloSearch.py -h
+```
+
 
 ## Usage
 
 To get started, download a test dataset - a genomic sequencing library from *Caenorhabditis elegans* generated using PacBio (using ```fasterq-dump``` from [sra-tools](https://github.com/ncbi/sra-tools)).
 ```bash
-# Download a test Caenorhabditis elegans PacBio long-read dataset from SRA using sra-tools
 fasterq-dump --fasta SRR7594465
 ```
-Wait a bit until the download is complete, then run TeloSearch.py.
+Wait for the download to complete, then run TeloSearch.py on the downloaded library.
 ```bash
-# Run TeloSearchLR
-python3 TeloSearchLR.py -f SRR7594465.fasta -k 4 -K 20 -m 1 -M 100 -n 4000
+python TeloSearchLR.py -f SRR7594465.fasta -k 4 -K 20 -m 1 -M 100 -n 4000
 ```
 The algorithm will look for tandem repeats of period 4-20 bp (```-k 4 -K 20```)in reads ≥ 8000bp (2×4000, specified through ```-n 4000```) and rank each tandem repeat motif based on its occupancy in first and last 1000 bp.  The algorithm then plots the occupancy of the top 100 patterns ranked this way (```-m 1 -M 100```).
 
@@ -50,6 +70,8 @@ Options:
     -v --version                   display the version number and quit
     -h --help                      display this help message and quit
 ```
+## Sample use cases (to do)
+
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first

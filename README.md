@@ -1,6 +1,6 @@
 # TeloSearchLR
 
-TeloSearchLR (**TELO**mere **SEARCH** using **L**ong sequencing **R**eads) is a Python script for aiding the identificaiton of telomeric repeat motifs.
+TeloSearchLR (**telo**mere **search** using **l**ong sequencing **r**eads) is a Python script for aiding the identificaiton of telomeric repeat motifs.
 
 ## Installation
 

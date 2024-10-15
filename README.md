@@ -37,11 +37,11 @@ Options:
     -n --num_of_nucleotides INT    number of nucleotides to plot motif occupancy
   Required for occupancy and exhaustive modes:
     -k --k_value            INT    shortest repeat period (>0) to consider by TideHunter
-    -K --K_value            INT    longest repeat period (>=k) to consider by TideHunter
+    -K --K_value            INT    longest repeat period (≥k) to consider by TideHunter
     -m --mth_pattern        INT    most frequent motif to plot (>0)
-    -M --Mth_pattern        INT    least frequent motif to plot (>m)
+    -M --Mth_pattern        INT    least frequent motif to plot (≥m)
   Required for single-motif mode:
-    -T --TideHunter         STR    a TideHunter (>=v1.5.4) tabular output
+    -T --TideHunter         STR    a TideHunter (≥v1.5.4) tabular output
   Other options:
     -t --terminal           INT    terminal number of nucleotides to consider for ranking motif occupancy [1000]
     -c --cores              INT    number of threads to use for TideHunter [4]

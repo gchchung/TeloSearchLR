@@ -22,6 +22,7 @@ Wait a bit until the download is complete, then run TeloSearch.py.
 # Run TeloSearchLR
 python3 TeloSearchLR.py -f SRR7594465.fasta -k 4 -K 20 -m 1 -M 100 -n 4000
 ```
+The algorithm will look for tandem repeats of period 4-20 bp (```-k 4 -K 20```)in reads ≥ 8000bp (2×4000, specified through ```-n 4000```) and rank each tandem repeat motif based on its occupancy in first and last 1000 bp.  The algorithm then plots the occupancy of the top 100 patterns ranked this way (```-m 1 -M 100```).
 
 ## Commands and options
 ```text
@@ -59,3 +60,9 @@ Please make sure to update tests as appropriate.
 ## License
 
 NYU License
+
+## References
+Please cite this repository. A preprint describing this algorithm will be posted shortly.
+
+## Contact
+George Chung (gc95@nyu.edu)

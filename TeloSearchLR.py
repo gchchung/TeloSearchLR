@@ -14,7 +14,7 @@ import plotly.graph_objects as go
 import os
 import math
 
-version_number = "0.9.0"
+version_number = "1.0.0"
 TeloSearchLR_output_prefix = "TeloSearchLR"
 help_text = """TeloSearchLR: TELOomeric repeat motif SEARCH using Long Reads
                 

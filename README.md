@@ -46,8 +46,8 @@ Options:
     -t --terminal           INT    terminal number of nucleotides to consider for ranking motif occupancy [1000]
     -c --cores              INT    number of threads to use for TideHunter [4]
     -p --path               STR    path of TideHunter (if not already in $PATH)
-    -v --version                   displays the version number and quits
-    -h --help                      displays this help message.
+    -v --version                   display the version number and quit
+    -h --help                      display this help message and quit
 ```
 ## Contributing
 

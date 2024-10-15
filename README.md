@@ -1,2 +1,2 @@
 # TeloSearchLR
-TELOmere SEARCH in Long sequencing Reads
+TELOmere SEARCH using Long sequencing Reads

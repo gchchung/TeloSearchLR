@@ -12,8 +12,12 @@ conda install _________________
 
 ## Usage
 
+```bash
+# Download a test Caenorhabditis elegans PacBio long-read dataset from SRA using sra-tools
+fasterq-dump --fasta SRR7594465
+```
 ```python
-python3 TeloSearchLR.py -f GenomicReadsLibrary.fasta -k 4 -K 20 -m 1 -M 100 -n 4000
+python3 TeloSearchLR.py -f SRR7594465.fasta -k 4 -K 20 -m 1 -M 100 -n 4000
 
 ```
 

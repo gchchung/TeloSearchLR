@@ -17,7 +17,7 @@ docker pull gchchung/telosearchlr:telosearchlr_v1.0.0
 ```
 Then display the help message.
 ```text
-docker run telosearchlr_v1.0.0 -h
+docker run telosearchlr_v1.0.0 TeloSearchLR.py -h
 ```
 
 ### From source

@@ -818,10 +818,10 @@ def main(argv):
     for opt, arg in opts:
         if opt in ("-h", "--help"):
             print(arg_help)  # print the help message
-            sys.exit(2)
+            sys.exit(0)
         elif opt in ("-v", "--version"):
             print(version_number)
-            sys.exit(2)
+            sys.exit(0)
         elif opt in ("-f", "--fasta"):
             arg_fasta_file = arg
         elif opt in ("-k", "--k_value"):
@@ -853,14 +853,14 @@ def main(argv):
         if arg_k <= 0 or arg_K < arg_k or arg_m <= 0 or arg_M < arg_m or arg_n == 0 or arg_fasta_file == "":
             print("Missing or incorrect options. See below.\n")
             print(arg_help)
-            sys.exit(2)
+            sys.exit(0)
         else:
             pass
     elif arg_mode == "single motif":
         if arg_fasta_file == "" or arg_T == "" or arg_n == 0:
             print("Missing or incorrect options. See below.\n")
             print(arg_help)
-            sys.exit(2)
+            sys.exit(0)
         else:
             pass
     else:
@@ -939,7 +939,7 @@ def main(argv):
             print("[main] Step 2: Found the specified TideHunter output file.")
         else:
             print("[main] Step 2: Specified TideHunter output file not found. Exiting.")
-            sys.exit(2)
+            sys.exit(0)
         
         
     ##############################################################################################################

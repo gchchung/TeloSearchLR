@@ -3,10 +3,10 @@ TeloSearchLR (**telo**mere **search** using **l**ong sequencing **r**eads) is a 
 
 ## Installation
 
-### Conda (to do)
+### Conda
 Install using conda. Test installation by displaying the help message.
 ```bash
-conda install bioconda::telosearchlr
+conda install -c bioconda -c conda-forge telosearchlr 
 telosearchlr -h
 ```
 

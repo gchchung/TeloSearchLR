@@ -7,7 +7,7 @@ TeloSearchLR (**telo**mere **search** using **l**ong sequencing **r**eads) is a 
 Install using conda. Test installation by displaying the help message.
 ```bash
 conda install -c bioconda -c conda-forge telosearchlr 
-telosearchlr -h
+TeloSearchLR -h
 ```
 
 ### Docker

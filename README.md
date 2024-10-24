@@ -4,13 +4,14 @@ TeloSearchLR (**telo**mere **search** using **l**ong sequencing **r**eads) is a 
 ## Installation
 
 ### Conda (to do)
-Install using conda.
+Install using conda. Test installation by displaying the help message.
 ```bash
-conda install _________________
+conda install bioconda::telosearchlr
+telosearchlr -h
 ```
 
 ### Docker
-Pull the TeloSearchLR image from Docker repository ```gchchung/telosearchlr```.
+Pull the TeloSearchLR image from Docker repository ```gchchung/telosearchlr```. Test by asking for the help message.
 ```text
 docker pull gchchung/telosearchlr:telosearchlr_v1.0.0
 ```
@@ -20,7 +21,7 @@ docker run telosearchlr_v1.0.0 TeloSearchLR.py -h
 ```
 
 ### From source
-Clone this GitHub repo, then run the TeloSearchLR.py script and display the help message.
+Clone this GitHub repo, then run the TeloSearchLR.py script, ask for the help message.
 ```bash
 # clone repo
 git clone https://github.com/gchchung/TeloSearchLR.git

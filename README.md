@@ -4,11 +4,26 @@ TeloSearchLR (**telo**mere **search** using **l**ong sequencing **r**eads) is a 
 ## Installation
 
 ### Conda
-Install using conda. Test installation by displaying the help message.
+Install using conda.
 ```bash
-conda install -c bioconda -c conda-forge telosearchlr 
-TeloSearchLR -h
+# Install TeloSearchLR to the base conda environment
+conda install -c bioconda -c conda-forge telosearchlr
+
+# Test the installation by calling the help function 
+TeloSearchLR.py -h
 ```
+Alternatively, create a new environment named "telosearchlr-env" to install TeloSearchLR.
+```bash
+# Create a new conda environment, install TeloSearchLR and dependencies, then activate the environment
+conda create -n telosearchlr-env -c bioconda -y telosearchlr && conda activate telosearchlr-env
+
+# Test the installation by calling the help function
+TeloSearchLR.py -h
+
+# De-activate the conda environment before using other environments
+conda deactivate
+```
+
 
 ### Docker
 Pull the TeloSearchLR image from Docker repository ```gchchung/telosearchlr```. Test by asking for the help message.
@@ -34,7 +49,7 @@ python TeloSearch.py -h
 
 ## Usage
 
-To get started, download a test dataset - a genomic sequencing library from *Caenorhabditis elegans* generated using PacBio (using ```fasterq-dump``` from [sra-tools](https://github.com/ncbi/sra-tools)).
+To get started, download a test dataset - a genomic sequencing library from *Caenorhabditis elegans* generated using PacBio by Yoshimura & al (2019). You will need to have ```fasterq-dump``` from [sra-tools](https://github.com/ncbi/sra-tools) installed.
 ```bash
 fasterq-dump --fasta SRR7594465
 ```

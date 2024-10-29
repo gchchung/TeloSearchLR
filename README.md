@@ -4,7 +4,7 @@ TeloSearchLR (**telo**mere **search** using **l**ong sequencing **r**eads) is a 
 ## Installation
 
 ### Conda
-Install using conda.
+Install in the base environment.
 ```bash
 # Install TeloSearchLR to the base conda environment
 conda install -c bioconda -c conda-forge telosearchlr
@@ -12,7 +12,7 @@ conda install -c bioconda -c conda-forge telosearchlr
 # Test the installation by calling the help function 
 TeloSearchLR.py -h
 ```
-Alternatively, create a new environment named "telosearchlr-env" to install TeloSearchLR.
+Or install in a new environment named "telosearchlr-env".
 ```bash
 # Create a new conda environment, install TeloSearchLR and dependencies, then activate the environment
 conda create -n telosearchlr-env -c bioconda -y telosearchlr && conda activate telosearchlr-env
@@ -23,41 +23,50 @@ TeloSearchLR.py -h
 # De-activate the conda environment before using other environments
 conda deactivate
 ```
+Note that if you install via conda, you will not need to call the python command.
 
 
 ### Docker
-Pull the TeloSearchLR image from Docker repository ```gchchung/telosearchlr```. Test by asking for the help message.
-```text
+```bash
+# Pull the TeloSearchLR image from Docker repository ```gchchung/telosearchlr```. Test by asking for the help message.
 docker pull gchchung/telosearchlr:telosearchlr_v1.0.0
-```
-Then display the help message.
-```text
+
+# Then display the help message.
 docker run telosearchlr_v1.0.0 TeloSearchLR.py -h
 ```
 
 ### From source
-Clone this GitHub repo, then run the TeloSearchLR.py script, ask for the help message.
 ```bash
 # clone repo
 git clone https://github.com/gchchung/TeloSearchLR.git
 cd TeloSearchLR
 
-# run script
+# install dependencies (not shown), then run script
 python TeloSearch.py -h
 ```
 
 
 ## Usage
-
-To get started, download a test dataset - a genomic sequencing library from *Caenorhabditis elegans* generated using PacBio by Yoshimura & al (2019). You will need to have ```fasterq-dump``` from [sra-tools](https://github.com/ncbi/sra-tools) installed.
+### Using a library from NCBI Sequence Read Archive
+Download a test dataset - a genomic sequencing library from *Caenorhabditis elegans* generated using PacBio by Yoshimura & al (2019). You will need to have ```fasterq-dump``` from [sra-tools](https://github.com/ncbi/sra-tools) installed.
 ```bash
 fasterq-dump --fasta SRR7594465
 ```
 Wait for the download to complete, then run TeloSearch.py on the downloaded library.
 ```bash
-python TeloSearchLR.py -f SRR7594465.fasta -k 4 -K 20 -m 1 -M 100 -n 4000
+python TeloSearchLR.py -f SRR7594465.fasta -k 4 -K 20 -m 1 -M 100 -n 6000
 ```
 The algorithm will look for tandem repeats of period 4-20 bp (```-k 4 -K 20```)in reads ≥ 8000bp (2×4000, specified through ```-n 4000```) and rank each tandem repeat motif based on its occupancy in first and last 1000 bp.  The algorithm then plots the occupancy of the top 100 patterns ranked this way (```-m 1 -M 100```).
+
+### Using your own sequencing library
+Sequencing library reads are generally in the FASTQ format, which you must first convert into a FASTA file. A possible method is by using the Unix sed.
+```bash
+sed -n '1~4s/^@/>/p;2~4p' YOUR_LIBRARY.fastq > YOUR_LIBRARY.fasta
+```
+Then run TeloSearch.py on YOUR_LIBRARY.fasta.
+```bash
+python3 TeloSearch.py -f YOUR_LIBRARY.fasta -k 4 -K 20 -m 1 -M 100 -n 6000
+```
 
 ## Commands and options
 ```text

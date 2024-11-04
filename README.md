@@ -4,18 +4,11 @@ TeloSearchLR (**telo**mere **search** using **l**ong sequencing **r**eads) is a 
 ## Installation
 
 ### Conda
-Install in the base environment.
-```bash
-# Install TeloSearchLR to the base conda environment
-conda install -c bioconda -c conda-forge telosearchlr
-
-# Test the installation by calling the help function 
-TeloSearchLR.py -h
-```
-Or install in a new environment named "telosearchlr-env".
+Install in a new environment named "telosearchlr-env".
 ```bash
 # Create a new conda environment, install TeloSearchLR and dependencies, then activate the environment
-conda create -n telosearchlr-env -c bioconda -y telosearchlr && conda activate telosearchlr-env
+conda create -n telosearchlr-env -c bioconda -y telosearchlr
+conda activate telosearchlr-env
 
 # Test the installation by calling the help function
 TeloSearchLR.py -h

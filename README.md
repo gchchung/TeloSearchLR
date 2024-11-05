@@ -76,15 +76,15 @@ python3 TeloSearch.py -f YOUR_LIBRARY.fasta -k 4 -K 20 -m 1 -M 100 -n 6000
 ```
 
 ### 3. Unusually long telomeric repeat motifs
-Typically, telomeres maintained by telomerase have short motifs (<=30 bps), but telomeres maintained by ALT can have very long motifs. To find repeat motifs longer than 500 bps, change the -t paramenter to 2* the maximum period you'd like to consider.
-|recommended to change    | description                                                                                                             |
+Typically, telomeres maintained by telomerase have short motifs (<=30 bps), but telomeres maintained by ALT can have very long motifs. To find repeat motifs longer than 500 bps, change the -t paramenter to 2* the maximum period you'd like to consider. To run in this mode, the requirements are the same as above but the *t*-value can be changed. 
+|option    | description                                                                                                             |
 |--------------|-------------------------------------------------------------------------------------------------------------------------|
 |-t            | the terminal region (in bps) to rank repeat motifs. It must be at least 2 times the *K*-value (INT, default 1000)       |
 
 This is because when *t* = 1000, the longest tandem repeat that can fit in 1000 nt is a 500-nt repeat (2*500 = 1000).
 
 ### 4. Telomeric repeat motif discovery, but sort results by repeat period first
-With the -e flag, each TeloSearchLR run can also sort the found motifs first by repeat period, then by occupancy.
+With the -e flag, each TeloSearchLR run can also sort the found motifs first by repeat period, then by occupancy. This mode may be useful if you already suspect the telomeric motif to be between *k* and *K* nucleotides long. Required options are the same as above plus the -e.
 |required       | description                               |
 |---------------|-------------------------------------------|
 |-e             | exhaustive mode.                          |
@@ -92,9 +92,11 @@ With the -e flag, each TeloSearchLR run can also sort the found motifs first by 
 "Exhaustive mode" (to do)
 
 
-### 5. Testing to see if a repeat motif shows stranded occupancy at the read ends
+### 5. Testing to see if a specfic motif is repeated at read ends
 |required       | description                                                         |
 |---------------|---------------------------------------------------------------------|
+|-f             | FASTA file of the reads (STR)                                       |
+|-n             | number of nucleotides to plot the repeat occupancy (INT)            |
 |-s             | the repeat motif to test, eg. ```-s TTAGGG``` (STR)                 |
 |-T             | a TideHunter search result file in tabular format, eg. a *TideHunterTable.txt from an earlier TeloSearchLR run (STR)  |
 

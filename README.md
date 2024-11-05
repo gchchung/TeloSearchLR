@@ -169,7 +169,9 @@ Options:
 ```
 ## To do
 
-Improving the SVG output. PNG output will likely be deprecated in a future release.
+- Improving the SVG output. PNG output may be deprecated in a future release as SVG is immediately publication-ready
+- Possibly move to matplotlib for graphing
+- A fork for short paired-end reads?
 
 ## Contributing
 
@@ -185,4 +187,4 @@ to discuss what you would like to change.
 Chung, Piano and Gunsalus (2024) TeloSearchLR: an algorithm to detect novel telomere repeat motifs using long sequencing reads. bioRxiv [DOI: 10.1101/2024.10.29.617943](https://doi.org/10.1101/2024.10.29.617943).
 
 ## Contact
-George Chung (gc95@nyu.edu)
+George Chung (gc95@nyu.edu), Research Scientist, New York University

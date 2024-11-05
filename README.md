@@ -63,7 +63,10 @@ python TeloSearch.py -h
 
 Download a PacBio genomic sequencing library from *Caenorhabditis elegans* by [Yoshimura & al (2019)](https://pubmed.ncbi.nlm.nih.gov/31123080/) using ```fasterq-dump``` from [sra-tools](https://github.com/ncbi/sra-tools). Then, get TeloSearchLR to find and rank repeat motifs between 4 and 20-nt long (-k 4 -K 20) from the terminal 1000 nts (-t 1000) of reads 2000 nts or over. Plot the occupancy patterns of the top 100 motifs (-m 1 -M 100) in the first and last 6000 nt of all reads (-n 6000) longer than 12,000 nts.
 ```bash
+# get the reads
 fasterq-dump --fasta SRR7594465
+
+# run TeloSearchLR
 python TeloSearchLR.py -f SRR7594465.fasta -k 4 -K 20 -t 1000 -m 1 -M 100 -n 6000
 ```
 The [output of this](https://github.com/gchchung/TeloSearchLR/blob/main/repeatPattern.m1.M100.png) can be found in the *.results folder. The known telomeric repeat of *C. elegans*, TTAGGC, is the second most frequent terminal repeat motif (second row of plots) and has the  stranded occupancy pattern of telomeric repeat motifs. Typically, telomeric repeat motifs are among the most frequent repeat motifs. Exceptions can be found when the telomeres are short.   
@@ -71,37 +74,65 @@ The [output of this](https://github.com/gchchung/TeloSearchLR/blob/main/repeatPa
 ### 2. Telomeric repeat motif discovery in your own library
 The required flags are the same as above, but you must convert your reads into a FASTA file, usually from a FASTQ. A possible method is by using the Unix sed.
 ```bash
+# convert YOUR_LIBRARY.fastq to YOUR_LIBRARY.fasta 
 sed -n '1~4s/^@/>/p;2~4p' YOUR_LIBRARY.fastq > YOUR_LIBRARY.fasta
-python3 TeloSearch.py -f YOUR_LIBRARY.fasta -k 4 -K 20 -m 1 -M 100 -n 6000
+
+# run TeloSearchLR
+python3 TeloSearchLR.py -f YOUR_LIBRARY.fasta -k 4 -K 20 -m 1 -M 100 -n 6000
 ```
 
 ### 3. Unusually long telomeric repeat motifs
-Typically, telomeres maintained by telomerase have short motifs (<=30 bps), but telomeres maintained by ALT can have very long motifs. To find repeat motifs longer than 500 bps, change the -t paramenter to 2* the maximum period you'd like to consider. To run in this mode, the requirements are the same as above but the *t*-value can be changed. 
+Typically, telomeres maintained by telomerase have short motifs (<=30 bps), but telomeres maintained by ALT can have very long motifs. To find repeat motifs longer than 500 bps, change the -t paramenter to 2 * [the maximum period you'd like to consider]. This is because when *t* = 1000, the longest tandem repeat that can fit in 1000 nt is a 500-nt repeat (2*500 = 1000).
 |option    | description                                                                                                             |
 |--------------|-------------------------------------------------------------------------------------------------------------------------|
 |-t            | the terminal region (in bps) to rank repeat motifs. It must be at least 2 times the *K*-value (INT, default 1000)       |
 
-This is because when *t* = 1000, the longest tandem repeat that can fit in 1000 nt is a 500-nt repeat (2*500 = 1000).
+In our manuscript, we described how telomeric motifs were found in two *Strongyloides stercoralis* libraries. *Strongyloides* nematode species are thought to have evolutionarily lost telomerase ([Mota & al 2024](https://pubmed.ncbi.nlm.nih.gov/38316773/), Fig. 1), and the low chromosome count of *S. stercoralis* ([Kounosu & al 2023](https://pubmed.ncbi.nlm.nih.gov/38008120/)) makes this species ideal to search for novel telomeres.
 
-### 4. Telomeric repeat motif discovery, but sort results by repeat period first
-With the -e flag, each TeloSearchLR run can also sort the found motifs first by repeat period, then by occupancy. This mode may be useful if you already suspect the telomeric motif to be between *k* and *K* nucleotides long. Required options are the same as above plus the -e.
+```bash
+# download the S. stercoralis libraries
+fasterq-dump --fasta SRR25177361
+fasterq-dump --fasta SRR25177362
+
+# concatenate the two libraries
+cat SRR25177361.fasta SRR25177362.fasta > Sstercoralis.fasta
+
+# run TeloSearchLR, search for 21 to 1000-mers of repeat motifs and graph the terminal 8000 nts
+# because we are testing up to 1000-mers, t-value has to be at least 2000
+python TeloSearchLR.py -f Sstercoralis.fasta -k 21 -K 1000 -m 1 -M 100 -t 2000 -n 8000
+```
+
+
+### 4. Telomeric repeat motif discovery, but sorting the motifs by repeat period first
+With the -e flag, each TeloSearchLR run can also sort the discovered motifs first by repeat period, then by occupancy. This mode may be useful if you already suspect the telomeric motif to be between *k* and *K* nucleotides long. Required options are the same as above plus the -e.
 |required       | description                               |
 |---------------|-------------------------------------------|
 |-e             | exhaustive mode.                          |
 
-"Exhaustive mode" (to do)
-
+Using the same *C. elegans* library as in example 1, we run TeloSearchLR in "exhaustive" mode. 
+```bash
+# run TeloSearchLR in exhaustive mode - sorting the motifs first by period then by occupancy
+python TeloSearchLR.py -f SRR7594465.fasta -k 4 -K 20 -t 1000 -m 1 -M 100 -n 6000 -e
+```
 
 ### 5. Testing to see if a specfic motif is repeated at read ends
+Suppose you sequence a novel organism (library: NOVEL_ORG.fasta) whose closest known relative has a telomeric motif of TTAGGG. You would like to quickly check if this novel organism also has TTAGGG telomeres. TeloSearchLR offers a "single-motif" mode that allows you to check only one motif to see if it is telomeric or not. 
+
 |required       | description                                                         |
 |---------------|---------------------------------------------------------------------|
 |-f             | FASTA file of the reads (STR)                                       |
 |-n             | number of nucleotides to plot the repeat occupancy (INT)            |
 |-s             | the repeat motif to test, eg. ```-s TTAGGG``` (STR)                 |
-|-T             | a TideHunter search result file in tabular format, eg. a *TideHunterTable.txt from an earlier TeloSearchLR run (STR)  |
+|-T             | a TideHunter search result file in tabular format, eg. a *TideHunterTable.txt file from an earlier TeloSearchLR run (STR)  |
 
-"Single-motif mode" (to do)
+We require a [TideHunter search output in tabular format](https://github.com/yangao07/TideHunter?tab=readme-ov-file#to-generate-consensus-sequences-in-tabular-format) in this mode. This can come from an independent run of TideHunter, or an earlier run of TeloSearchLR. Here we demonstrate how to check if a 6-mer TTAGGG motif is a telomeric motif by setting -p, -P, and -m all to 6 in TideHunter.
+```bash
+# run TideHunter
+TideHunter -f 2 -p 6 -P 6 -m 6 NOVEL_ORG.fasta > NOVEL_ORG_6mer_repeats.TideHunterTable.txt   # TideHunter search result in NOVEL_ORG_6mer_repeats.TideHunterTable.txt
 
+# run TeloSearchLR
+python TeloSearchLR.py -f NOVEL_ORG.fasta -n 4000 -s TTAGGG -T NOVEL_ORG_6mer_repeats.TideHunterTable.txt
+```
 
 ## Commands and options
 ```text
@@ -129,6 +160,9 @@ Options:
     -v --version                   display the version number and quit
     -h --help                      display this help message and quit
 ```
+## To do
+
+Improving the SVG output. PNG output will likely be deprecated in a future release.
 
 ## Contributing
 
@@ -141,7 +175,7 @@ to discuss what you would like to change.
 [NYU License](https://github.com/gchchung/TeloSearchLR/blob/main/LICENSE)
 
 ## Please cite
-Chung & al. (2024) TeloSearchLR: an algorithm to detect novel telomere repeat motifs using long sequencing reads. bioRxiv [DOI: 10.1101/2024.10.29.617943](https://doi.org/10.1101/2024.10.29.617943).
+Chung, Piano and Gunsalus (2024) TeloSearchLR: an algorithm to detect novel telomere repeat motifs using long sequencing reads. bioRxiv [DOI: 10.1101/2024.10.29.617943](https://doi.org/10.1101/2024.10.29.617943).
 
 ## Contact
 George Chung (gc95@nyu.edu)

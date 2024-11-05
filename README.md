@@ -71,7 +71,7 @@ fasterq-dump --fasta SRR7594465
 # run TeloSearchLR
 python TeloSearchLR.py -f SRR7594465.fasta -k 4 -K 20 -t 1000 -m 1 -M 100 -n 6000
 ```
-The [output of this](https://github.com/gchchung/TeloSearchLR/blob/main/repeatPattern.m1.M100.png) can be found in the *.results folder. As expected, the known telomeric repeat of *C. elegans*, TTAGGC, is almost exclusively found at the 3' ends of reads and as the reverse complement at the 5' ends of reads: a phenomenon we call **"terminal stranded occupancy"**. It is also the second most frequent terminal repeat motif (second row of plots). Typically, telomeric repeat motifs are among the most frequent repeat motifs, but may not be when the telomeres are short.   
+The [output of this](https://github.com/gchchung/TeloSearchLR/blob/main/repeatPattern.m1.M100.png) can be found in the *.results folder. As expected, the known telomeric repeat of *C. elegans*, TTAGGC, is almost exclusively found at the 3' ends of reads and as the reverse complement at the 5' ends of reads. It is also the second most frequent terminal repeat motif (second row of plots). Typically, telomeric repeat motifs are among the most frequent repeat motifs, but may not be when the telomeres are short.   
 
 ### 2. Telomeric repeat motif discovery in your own library
 The required flags are the same as above, but you must convert your reads into a FASTA file, usually from a FASTQ. A possible method is by using the Unix sed.
@@ -188,7 +188,7 @@ Occupancies are represented in three plots: the occupancy by position at the 5' 
 
 ![image](https://github.com/user-attachments/assets/9a6fcf8c-6899-446f-8217-903f89d16c2f)
 
-We have seen instances with very long telomeres that the true telomeric motif will not have an obvious terminal stranded occupancy ([Chung & al 2024](https://doi.org/10.1101/2024.10.29.617943), Fig. 4). This is because if the telomeres are *longer* than the reads, the telomeric motifs are no longer only found on one or the other end. Thus, this algorithm works best if sequencing reads are much longer than the average telomere.
+We have seen instances with very long telomeres that the true telomeric motif does not have an obvious terminal stranded occupancy ([Chung & al 2024](https://doi.org/10.1101/2024.10.29.617943), Fig. 4). This is because if the telomeres are *longer* than the reads, the telomeric motifs are no longer only found on one or the other end. Thus, this algorithm works best if sequencing reads are much longer than the average telomere.
 
 ## To do
 

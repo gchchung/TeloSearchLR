@@ -109,7 +109,7 @@ python TeloSearchLR.py -f Sstercoralis.fasta -k 21 -K 1000 -m 1 -M 100 -t 2000 -
 With the -e flag, each TeloSearchLR run can also sort the discovered motifs first by repeat period, then by occupancy. This mode may be useful if you already suspect the telomeric motif to be between *k* and *K* nucleotides long. Required options are the same as above plus the -e.
 |required       | description                               |
 |---------------|-------------------------------------------|
-|-e             | exhaustive mode.                          |
+|-e             | exhaustive mode: sort motifs by period first then by occupancy. |
 
 Using the same *C. elegans* library as in example 1, we run TeloSearchLR in "exhaustive" mode. 
 ```bash

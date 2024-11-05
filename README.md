@@ -6,6 +6,12 @@ TeloSearchLR (**telo**mere **search** using **l**ong sequencing **r**eads) is a 
 
 [Usage](https://github.com/gchchung/TeloSearchLR/tree/main?tab=readme-ov-file#usage)
 
+1. [Telomeric repeat motif discovery using reads from NCBI SRA](https://github.com/gchchung/TeloSearchLR?tab=readme-ov-file#1-telomeric-repeat-motif-discovery-using-reads-from-ncbi-sequence-read-archive)
+2. [Telomeric repeat motif discovery in your own library](https://github.com/gchchung/TeloSearchLR?tab=readme-ov-file#2-telomeric-repeat-motif-discovery-in-your-own-library)
+3. [Unusually long telomeric repeat motifs](https://github.com/gchchung/TeloSearchLR?tab=readme-ov-file#3-unusually-long-telomeric-repeat-motifs)
+4. [Telomeric repeat motif discovery, but sorting the motifs by repeat period first](https://github.com/gchchung/TeloSearchLR?tab=readme-ov-file#4-telomeric-repeat-motif-discovery-but-sorting-the-motifs-by-repeat-period-first)
+5. [Testing to see if a specific motif is repeated at read ends](https://github.com/gchchung/TeloSearchLR?tab=readme-ov-file#5-testing-to-see-if-a-specfic-motif-is-repeated-at-read-ends)
+
 [Commands and options](https://github.com/gchchung/TeloSearchLR/tree/main?tab=readme-ov-file#commands-and-options)
 
 [Contributing](https://github.com/gchchung/TeloSearchLR/tree/main?tab=readme-ov-file#contributing)
@@ -127,8 +133,8 @@ Suppose you sequence a novel organism (library: NOVEL_ORG.fasta) whose closest k
 
 We require a [TideHunter search output in tabular format](https://github.com/yangao07/TideHunter?tab=readme-ov-file#to-generate-consensus-sequences-in-tabular-format) in this mode. This can come from an independent run of TideHunter, or an earlier run of TeloSearchLR. Here we demonstrate how to check if a 6-mer TTAGGG motif is a telomeric motif by setting -p, -P, and -m all to 6 in TideHunter.
 ```bash
-# run TideHunter
-TideHunter -f 2 -p 6 -P 6 -m 6 NOVEL_ORG.fasta > NOVEL_ORG_6mer_repeats.TideHunterTable.txt   # TideHunter search result in NOVEL_ORG_6mer_repeats.TideHunterTable.txt
+# run TideHunter. TideHunter search result in NOVEL_ORG_6mer_repeats.TideHunterTable.txt
+TideHunter -f 2 -p 6 -P 6 -m 6 NOVEL_ORG.fasta > NOVEL_ORG_6mer_repeats.TideHunterTable.txt
 
 # run TeloSearchLR
 python TeloSearchLR.py -f NOVEL_ORG.fasta -n 4000 -s TTAGGG -T NOVEL_ORG_6mer_repeats.TideHunterTable.txt

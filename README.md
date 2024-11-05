@@ -62,12 +62,12 @@ python TeloSearch.py -h
 |-M             | numerical rank of the least frequent motif to plot (INT)            |
 |-n             | number of nucleotides to plot the repeat occupancy (INT)            |
 
-Let's try downloading a PacBio genomic sequencing library from *Caenorhabditis elegans* by [Yoshimura & al (2019)](https://pubmed.ncbi.nlm.nih.gov/31123080/) using ```fasterq-dump``` from [sra-tools](https://github.com/ncbi/sra-tools). Then, get TeloSearchLR to find and rank repeat motifs between 4 and 20-nt long (-k 4 -K 20) from the terminal 1000 nts (-t 1000). Plot the occupancy patterns of the top 100 motifs (-m 1 -M 100) in the first and last 6000 nt of all reads (-n 6000) longer than 12,000 nts.
+Download a PacBio genomic sequencing library from *Caenorhabditis elegans* by [Yoshimura & al (2019)](https://pubmed.ncbi.nlm.nih.gov/31123080/) using ```fasterq-dump``` from [sra-tools](https://github.com/ncbi/sra-tools). Then, get TeloSearchLR to find and rank repeat motifs between 4 and 20-nt long (-k 4 -K 20) from the terminal 1000 nts (-t 1000). Plot the occupancy patterns of the top 100 motifs (-m 1 -M 100) in the first and last 6000 nt of all reads (-n 6000) longer than 12,000 nts.
 ```bash
 fasterq-dump --fasta SRR7594465
 python TeloSearchLR.py -f SRR7594465.fasta -k 4 -K 20 -t 1000 -m 1 -M 100 -n 6000
 ```
-The [output of this](https://github.com/gchchung/TeloSearchLR/blob/main/repeatPattern.m1.M100.png) can be found in the *.results folder. The known telomeric repeat of *C. elegans*, TTAGGC, is the second most frequent repeat motif (second row of plots) and has the  stranded occupancy pattern of telomeric repeat motifs. Typically, telomeric repeat motifs are among the most frequent repeat motifs. Exceptions can be found when the telomeres are short.   
+The [output of this](https://github.com/gchchung/TeloSearchLR/blob/main/repeatPattern.m1.M100.png) can be found in the *.results folder. The known telomeric repeat of *C. elegans*, TTAGGC, is the second most frequent terminal repeat motif (second row of plots) and has the  stranded occupancy pattern of telomeric repeat motifs. Typically, telomeric repeat motifs are among the most frequent repeat motifs. Exceptions can be found when the telomeres are short.   
 
 ### Telomeric repeat motif discovery in your own library
 The required flags are the same as above, but you must convert your reads into a FASTA file, usually from a FASTQ. A possible method is by using the Unix sed.

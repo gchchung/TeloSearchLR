@@ -13,14 +13,12 @@ conda activate telosearchlr-env
 # In the next release we will fix this, but our original conda recipe didn't include "python-kaleido"
 conda install -c conda-forge -y python-kaleido
 
-# Test the installation by calling the help function
+# Test the installation by calling the help function (you will not need to call the python command)
 TeloSearchLR.py -h
 
 # De-activate the conda environment before using other environments
 conda deactivate
 ```
-Note that if you install via conda, you will not need to call the python command.
-
 
 ### Docker
 ```bash

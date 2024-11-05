@@ -1,35 +1,47 @@
 ![alt text](https://github.com/gchchung/TeloSearchLR/blob/main/logo_copy_v3.svg)
 TeloSearchLR (**telo**mere **search** using **l**ong sequencing **r**eads) is a Python script for aiding the identification of telomeric repeat motifs.
 
+## Contents
+[Installation](https://github.com/gchchung/TeloSearchLR/tree/main?tab=readme-ov-file#installation)
+
+[Usage](https://github.com/gchchung/TeloSearchLR/tree/main?tab=readme-ov-file#usage)
+
+[Commands and options](https://github.com/gchchung/TeloSearchLR/tree/main?tab=readme-ov-file#commands-and-options)
+
+[Sample use cases](https://github.com/gchchung/TeloSearchLR/tree/main?tab=readme-ov-file#sample-use-cases)
+
+[Contributing](https://github.com/gchchung/TeloSearchLR/tree/main?tab=readme-ov-file#contributing)
+
+[License](https://github.com/gchchung/TeloSearchLR/tree/main?tab=readme-ov-file#license)
+
+[Please cite](https://github.com/gchchung/TeloSearchLR/tree/main?tab=readme-ov-file#please-cite)
+
+[Contact](https://github.com/gchchung/TeloSearchLR/tree/main?tab=readme-ov-file#contact)
+
 ## Installation
 
 ### Conda
 Install in a new environment named "telosearchlr-env".
 ```bash
-
-conda create -n telosearchlr-env -c bioconda -y telosearchlr    # Create a new conda environment, install TeloSearchLR and dependencies
-conda activate telosearchlr-env                                 # then activate the environment
-conda install -c conda-forge -y python-kaleido                  # In the next release we will fix this, but our original conda recipe didn't include "python-kaleido"
-TeloSearchLR.py -h                                              # Test the installation by calling the help function (you will not need to call the python command)
+conda create -n telosearchlr-env -c bioconda -y telosearchlr    # Create a new conda environment with TeloSearchLR
+conda activate telosearchlr-env                                 # Activate this environment
+conda install -c conda-forge -y python-kaleido                  # In the next release we will fix this, we did not include "python-kaleido"
+TeloSearchLR.py -h                                              # Test the installation by calling the help function
 conda deactivate                                                # De-activate the conda environment before using other environments
 ```
 
 ### Docker
 ```bash
-# Pull the TeloSearchLR image from Docker repository ```gchchung/telosearchlr```. Test by asking for the help message.
-docker pull gchchung/telosearchlr:telosearchlr_v1.0.0
-
-# Then display the help message.
-docker run telosearchlr_v1.0.0 TeloSearchLR.py -h
+docker pull gchchung/telosearchlr:telosearchlr_v1.0.0   # Pull the TeloSearchLR image from Docker repository ```gchchung/telosearchlr```.
+docker run telosearchlr_v1.0.0 TeloSearchLR.py -h       # Test by asking for the help message.
 ```
 
 ### From source
 ```bash
-# clone repo
-git clone https://github.com/gchchung/TeloSearchLR.git
+git clone https://github.com/gchchung/TeloSearchLR.git  # clone repo
 cd TeloSearchLR
 
-# install dependencies (not shown), then run script
+# after you have installed dependencies, you can run
 python TeloSearch.py -h
 ```
 

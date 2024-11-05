@@ -103,10 +103,10 @@ In this use case, TeloSearchLR requires these parameters.
 |-n            | number of nucleotides to plot the repeat occupancy (INT)            |                      
 
 ### Unusually long telomeric repeat motifs
-The same parameters required above, plus the -t paramenter.
-|paramenter    | description                                                                                               |
-|--------------|-----------------------------------------------------------------------------------------------------------|
-|-t            | the terminal region (in bps) to rank repeat motifs. The *K*-value can be at most 1/2 this *t*-value (INT) |
+As run above, the longest telomeric motif that can be detected is 500 bps. To find repeat motifs longer than this, change the -t paramenter.
+|paramenter    | description                                                                                                             |
+|--------------|-------------------------------------------------------------------------------------------------------------------------|
+|-t            | the terminal region (in bps) to rank repeat motifs. The *K*-value can be at most 1/2 this *t*-value (INT, default 1000) |
 
 
 ### Telomeric repeat motif discovery, with a known repeat period length

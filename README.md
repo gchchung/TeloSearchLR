@@ -6,18 +6,12 @@ TeloSearchLR (**telo**mere **search** using **l**ong sequencing **r**eads) is a 
 ### Conda
 Install in a new environment named "telosearchlr-env".
 ```bash
-# Create a new conda environment, install TeloSearchLR and dependencies, then activate the environment
-conda create -n telosearchlr-env -c bioconda -y telosearchlr
-conda activate telosearchlr-env
 
-# In the next release we will fix this, but our original conda recipe didn't include "python-kaleido"
-conda install -c conda-forge -y python-kaleido
-
-# Test the installation by calling the help function (you will not need to call the python command)
-TeloSearchLR.py -h
-
-# De-activate the conda environment before using other environments
-conda deactivate
+conda create -n telosearchlr-env -c bioconda -y telosearchlr    # Create a new conda environment, install TeloSearchLR and dependencies
+conda activate telosearchlr-env                                 # then activate the environment
+conda install -c conda-forge -y python-kaleido                  # In the next release we will fix this, but our original conda recipe didn't include "python-kaleido"
+TeloSearchLR.py -h                                              # Test the installation by calling the help function (you will not need to call the python command)
+conda deactivate                                                # De-activate the conda environment before using other environments
 ```
 
 ### Docker

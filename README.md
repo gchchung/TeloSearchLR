@@ -102,8 +102,8 @@ to discuss what you would like to change.
 
 [NYU License](https://github.com/gchchung/TeloSearchLR/blob/main/LICENSE)
 
-## References
-Please cite this repository. A preprint describing this algorithm will be posted shortly.
+## Please cite
+Chung & al. (2024) TeloSearchLR: an algorithm to detect novel telomere repeat motifs using long sequencing reads. bioRxiv DOI: 10.1101/2024.10.29.617943.
 
 ## Contact
 George Chung (gc95@nyu.edu)

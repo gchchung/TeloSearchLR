@@ -53,45 +53,43 @@ python TeloSearch.py -h
 (to do)
 
 ### Telomeric repeat motif discovery using reads from NCBI Sequence Read Archive
-For this, TeloSearchLR requires these parameters.
-|paramenter    | description                                                         |
-|--------------|---------------------------------------------------------------------|
-|-f            | FASTA file of the reads (STR)                                       |
-|-k            | shortest period to search for (INT)                                 |
-|-K            | longest period to search for (<=500 nt if -t is unspecified) (INT)  |
-|-m            | numerical rank of the most frequent motif to plot (INT)             |
-|-M            | numerical rank of the least frequent motif to plot (INT)            |
-|-n            | number of nucleotides to plot the repeat occupancy (INT)            |
+|required flags | description                                                         |
+|---------------|---------------------------------------------------------------------|
+|-f             | FASTA file of the reads (STR)                                       |
+|-k             | shortest period to search for (INT)                                 |
+|-K             | longest period to search for (<=500 nt if -t is unspecified) (INT)  |
+|-m             | numerical rank of the most frequent motif to plot (INT)             |
+|-M             | numerical rank of the least frequent motif to plot (INT)            |
+|-n             | number of nucleotides to plot the repeat occupancy (INT)            |
 
 Let's try downloading a PacBio genomic sequencing library from *Caenorhabditis elegans* by [Yoshimura & al (2019)](https://pubmed.ncbi.nlm.nih.gov/31123080/) using ```fasterq-dump``` from [sra-tools](https://github.com/ncbi/sra-tools). Then, get TeloSearchLR to find and rank repeat motifs between 4 and 20-nt long (-k 4 -K 20) from the terminal 1000 nts (-t 1000). Plot the occupancy patterns of the top 100 motifs (-m 1 -M 100) in the first and last 6000 nt of all reads (-n 6000) longer than 12,000 nts.
 ```bash
 fasterq-dump --fasta SRR7594465
 python TeloSearchLR.py -f SRR7594465.fasta -k 4 -K 20 -t 1000 -m 1 -M 100 -n 6000
 ```
-The [output of this](https://github.com/gchchung/TeloSearchLR/blob/main/repeatPattern.m1.M100.png) can be found in the *.results folder. The known telomeric repeat of *C. elegans*, TTAGGC, is the second most frequent repeat motif (second row of plots) and has the typical stranded occupancy pattern of telomeric repeat motifs. 
+The [output of this](https://github.com/gchchung/TeloSearchLR/blob/main/repeatPattern.m1.M100.png) can be found in the *.results folder. The known telomeric repeat of *C. elegans*, TTAGGC, is the second most frequent repeat motif (second row of plots) and has the  stranded occupancy pattern of telomeric repeat motifs. Typically, telomeric repeat motifs are among the most frequent repeat motifs. Exceptions can be found when the telomeres are short.   
 
 ### Telomeric repeat motif discovery in your own library
-Sequencing library reads are generally in the FASTQ format, which you must first convert into a FASTA file. A possible method is by using the Unix sed.
+The required flags are the same as above, but you must convert your reads into a FASTA file, usually from a FASTQ. A possible method is by using the Unix sed.
 ```bash
 sed -n '1~4s/^@/>/p;2~4p' YOUR_LIBRARY.fastq > YOUR_LIBRARY.fasta
-```
-Then run TeloSearch.py on YOUR_LIBRARY.fasta.
-```bash
 python3 TeloSearch.py -f YOUR_LIBRARY.fasta -k 4 -K 20 -m 1 -M 100 -n 6000
 ```
 
 ### Unusually long telomeric repeat motifs
-As run above, the longest telomeric motif that can be detected is 500 bps. To find repeat motifs longer than this, change the -t paramenter.
+The two examples above will detect motifs up to 500 bps. To find repeat motifs longer than this, change the -t paramenter to 2* the maximum period you'd like to consider.
 |paramenter    | description                                                                                                             |
 |--------------|-------------------------------------------------------------------------------------------------------------------------|
 |-t            | the terminal region (in bps) to rank repeat motifs. The *K*-value can be at most 1/2 this *t*-value (INT, default 1000) |
 
+This is because when *t* = 1000, the longest tandem repeat that can be found in 1000 nt is a 500-nt repeat (2*500 = 1000).
+
 ### Telomeric repeat motif discovery, with a known repeat period length
-(to do)
+"Exhaustive mode" (to do)
 
 
 ### Testing to see if a repeat motif shows stranded occupancy at the read ends
-(to do)
+"Single-motif mode" (to do)
 
 
 ## Commands and options

@@ -196,7 +196,7 @@ If you can identify the terminal stranded occupancy, you can make direct inferen
 
 For all the repeat motifs plotted, a corresponding text file with the plotted values is provided so you may use your favourite software (eg. R ggplot2, Python matplotlib) to do the plotting. 
 
-## Tested cases (2024-11)
+### Tested cases (2024-11)
 We have tested TeloSearchLR on libraries from metazoans, plants and fungi. In several beetle and wasp species, we successfully identified new telomeric motifs where short-read searches and other methods did not work (motifs in red below).
 
 ![image](https://github.com/user-attachments/assets/09e5508f-9e1c-47a5-9f77-23bb34c48727)

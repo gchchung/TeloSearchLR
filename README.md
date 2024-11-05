@@ -23,7 +23,7 @@ Install in a new environment named "telosearchlr-env".
 ```bash
 conda create -n telosearchlr-env -c bioconda -y telosearchlr    # Create a new conda environment with TeloSearchLR
 conda activate telosearchlr-env                                 # Activate this environment
-conda install -c conda-forge -y python-kaleido                  # In the next release we will fix this, we did not include "python-kaleido"
+conda install -c conda-forge -y python-kaleido                  # In the next release we will fix this: we didn't include "python-kaleido"
 TeloSearchLR.py -h                                              # Test the installation by calling the help function
 conda deactivate                                                # De-activate the conda environment before using other environments
 ```

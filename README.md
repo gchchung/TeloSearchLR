@@ -50,9 +50,9 @@ fasterq-dump --fasta SRR7594465
 ```
 Wait for the download to complete, then run TeloSearch.py on the downloaded library.
 ```bash
-python TeloSearchLR.py -f SRR7594465.fasta -k 4 -K 20 -m 1 -M 100 -n 6000
+python TeloSearchLR.py -f SRR7594465.fasta -k 4 -K 20 -t 1000 -m 1 -M 100 -n 6000
 ```
-The algorithm will look for tandem repeats of period 4-20 bp (```-k 4 -K 20```)in reads ≥ 8000bp (2×4000, specified through ```-n 4000```) and rank each tandem repeat motif based on its occupancy in first and last 1000 bp.  The algorithm then plots the occupancy of the top 100 patterns ranked this way (```-m 1 -M 100```).
+The algorithm will look for tandem repeats of period 4-20 bp (```-k 4 -K 20```) in the terminal 1000 bps (specified through ```-t 1000```) on reads ≥ 2000bp, and rank each tandem repeat motif based on its occupancy in those terminal 1000 bps.  The algorithm then plots the occupancy of the top 100 patterns ranked this way (```-m 1 -M 100```), at the first and last 6000 bps of all reads 12,000 bps or longer (```-n 6000```).
 
 ### Using your own sequencing library
 Sequencing library reads are generally in the FASTQ format, which you must first convert into a FASTA file. A possible method is by using the Unix sed.

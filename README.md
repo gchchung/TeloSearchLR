@@ -16,6 +16,8 @@ TeloSearchLR (**telo**mere **search** using **l**ong sequencing **r**eads) is a 
 
 [How it works](https://github.com/gchchung/TeloSearchLR/blob/main/README.md#how-it-works)
 
+- [Tested cases](https://github.com/gchchung/TeloSearchLR/tree/main?tab=readme-ov-file#tested-cases-2024-11)
+
 [Contributing](https://github.com/gchchung/TeloSearchLR/tree/main?tab=readme-ov-file#contributing)
 
 [License](https://github.com/gchchung/TeloSearchLR/tree/main?tab=readme-ov-file#license)

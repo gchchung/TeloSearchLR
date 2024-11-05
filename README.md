@@ -10,6 +10,9 @@ Install in a new environment named "telosearchlr-env".
 conda create -n telosearchlr-env -c bioconda -y telosearchlr
 conda activate telosearchlr-env
 
+# In the next release we will fix this, but our original conda recipe didn't include "python-kaleido"
+conda install -c conda-forge -y python-kaleido
+
 # Test the installation by calling the help function
 TeloSearchLR.py -h
 

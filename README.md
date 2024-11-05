@@ -14,6 +14,8 @@ TeloSearchLR (**telo**mere **search** using **l**ong sequencing **r**eads) is a 
 
 [Commands and options](https://github.com/gchchung/TeloSearchLR/tree/main?tab=readme-ov-file#commands-and-options)
 
+[How it works]()
+
 [Contributing](https://github.com/gchchung/TeloSearchLR/tree/main?tab=readme-ov-file#contributing)
 
 [License](https://github.com/gchchung/TeloSearchLR/tree/main?tab=readme-ov-file#license)
@@ -51,26 +53,6 @@ python TeloSearch.py -h
 
 
 ## Usage
-We take advantage of the fact that telomeric sequences only appear at the ends of long genomic reads prepared using standard procedures. Thus, we can focus our search for telomeric motifs on the terminal regions (*t* bp) of sequencing reads. Intact telomeres will always be read in its canonical (G-rich strand) orientation at the 3' ends of reads, and as the reverse complement on the 5' ends of reads.
-![image](https://github.com/user-attachments/assets/d0043e21-668d-4d07-89fe-ab8704fdc519)
-
-TeloSearch uses [TideHunter](https://github.com/yangao07/TideHunter) to search for repeats first in the first and last *t* bp of all reads. The search parameters require you to specify the shortest (-k) and the longest (-K) repeat periods to search.
-
-![image](https://github.com/user-attachments/assets/fb1650a3-1274-4414-b881-cde8ca0aaf75)
-
-After this initial search, TeloSearchLR ranks the discovered motifs by their total occupancy: the number of bases they occupy in the first and last *t* bps. The motifs are counted together if they are reverse complements (eg. ATTG, GAAT), or if they are cyclical permutations (eg. ATGC, TGCA, GCAT, CATG).
-
-![image](https://github.com/user-attachments/assets/616b915b-34ca-4598-8e4f-2f5baa38e6be)
-
-TeloSearchLR calls TideHunter again to search for repeat motifs across entire reads. You specify which motif rankings in the first and last *t* bps TeloSearchLR should graph (-m and -M).
-
-![image](https://github.com/user-attachments/assets/d18b9ac7-facc-4146-9f1e-c0b1ed7a2f10)
-
-If entire telomeres were captured on long sequencing reads, you should be able to visually identify candidate telomeric motifs by their **terminal stranded occupancy**.
-
-![image](https://github.com/user-attachments/assets/587d06fd-0001-4e9e-b484-a1e16e6aab73)
-
-
 ### 1. Telomeric repeat motif discovery using reads from NCBI Sequence Read Archive
 |required       | description                                                         |
 |---------------|---------------------------------------------------------------------|
@@ -181,6 +163,33 @@ Options:
     -v --version                   display the version number and quit
     -h --help                      display this help message and quit
 ```
+
+## How it works
+We take advantage of the fact that telomeric sequences only appear at the ends of long genomic reads prepared using standard procedures. Thus, we can focus our search for telomeric motifs on the terminal regions (*t* bp) of sequencing reads. Intact telomeres will always be read in its canonical (G-rich strand) orientation at the 3' ends of reads, and as the reverse complement on the 5' ends of reads.
+![image](https://github.com/user-attachments/assets/d0043e21-668d-4d07-89fe-ab8704fdc519)
+
+TeloSearch uses [TideHunter](https://github.com/yangao07/TideHunter) to search for repeats first in the first and last *t* bp of all reads. The search parameters require you to specify the shortest (-k) and the longest (-K) repeat periods to search.
+
+![image](https://github.com/user-attachments/assets/fb1650a3-1274-4414-b881-cde8ca0aaf75)
+
+After this initial search, TeloSearchLR ranks the discovered motifs by their total occupancy: the number of bases they occupy in the first and last *t* bps. The motifs are counted together if they are reverse complements (eg. ATTG, GAAT), or if they are cyclical permutations (eg. ATGC, TGCA, GCAT, CATG).
+
+![image](https://github.com/user-attachments/assets/616b915b-34ca-4598-8e4f-2f5baa38e6be)
+
+TeloSearchLR calls TideHunter again to search for repeat motifs across entire reads. You specify which motif rankings in the first and last *t* bps TeloSearchLR should graph (-m and -M).
+
+![image](https://github.com/user-attachments/assets/d18b9ac7-facc-4146-9f1e-c0b1ed7a2f10)
+
+If entire telomeres were captured on long sequencing reads, you should be able to visually identify candidate telomeric motifs by their **terminal stranded occupancy**.
+
+![image](https://github.com/user-attachments/assets/587d06fd-0001-4e9e-b484-a1e16e6aab73)
+
+Occupancies are represented in three plots: the occupancy by position at the 5' *n* nucleotides, the occupancy by position at the 3' *n* nucleotides, and a bar plots summarizing the occupancies at the terminal *n* nucleotides and the middle of the reads.
+
+![image](https://github.com/user-attachments/assets/9a6fcf8c-6899-446f-8217-903f89d16c2f)
+
+
+
 ## To do
 
 - Improving the SVG output. PNG output may be deprecated in a future release as SVG is immediately publication-ready

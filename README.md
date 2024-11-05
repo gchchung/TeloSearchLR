@@ -52,7 +52,7 @@ Wait for the download to complete, then run TeloSearch.py on the downloaded libr
 ```bash
 python TeloSearchLR.py -f SRR7594465.fasta -k 4 -K 20 -t 1000 -m 1 -M 100 -n 6000
 ```
-The algorithm will look for tandem repeats of period 4-20 bp (```-k 4 -K 20```) in the terminal 1000 bps (specified through ```-t 1000```) on reads ≥ 2000bp, and rank each tandem repeat motif based on its occupancy in those terminal 1000 bps.  The algorithm then plots the occupancy of the top 100 patterns ranked this way (```-m 1 -M 100```), at the first and last 6000 bps of all reads 12,000 bps or longer (```-n 6000```).
+The algorithm will look for tandem repeats of period 4-20 bp (```-k 4 -K 20```) in the terminal 1000 bps (specified through ```-t 1000```) on reads ≥ 2000bp, and rank each tandem repeat motif based on its occupancy in those terminal 1000 bps.  The algorithm then plots the occupancy of the top 100 patterns ranked this way (```-m 1 -M 100```), at the first and last 6000 bps of all reads 12,000 bps or longer (```-n 6000```). The [output of this](https://github.com/gchchung/TeloSearchLR/blob/main/repeatPattern.m1.M100.png) can be found in the *.results folder. The known telomeric repeat of *C. elegans*, TTAGGC, is the second most frequent repeat motif (second row of plots) and has the typical stranded occupancy pattern of telomeric repeat motifs. 
 
 ### Using your own sequencing library
 Sequencing library reads are generally in the FASTQ format, which you must first convert into a FASTA file. A possible method is by using the Unix sed.
@@ -90,7 +90,28 @@ Options:
     -v --version                   display the version number and quit
     -h --help                      display this help message and quit
 ```
-## Sample use cases (to do)
+## Sample use cases
+### Telomeric repeat motif discovery
+In this use case, TeloSearchLR requires these parameters.
+|paramenter    | description                                                         |
+|--------------|---------------------------------------------------------------------|
+|-f            | FASTA file of the reads (STR)                                       |
+|-k            | shortest period to search for (INT)                                 |
+|-K            | longest period to search for (<=500 nt if -t is unspecified) (INT)  |
+|-m            | numerical rank of the most frequent motif to plot (INT)             |
+|-M            | numerical rank of the least frequent motif to plot (INT)            |
+|-n            | number of nucleotides to plot the repeat occupancy (INT)            |                      
+
+### Unusually long telomeric repeat motifs
+The same parameters required above, plus the -t paramenter.
+|paramenter    | description                                                                                               |
+|--------------|-----------------------------------------------------------------------------------------------------------|
+|-t            | the terminal region (in bps) to rank repeat motifs. The *K*-value can be at most 1/2 this *t*-value (INT) |
+
+
+### Telomeric repeat motif discovery, with a known repeat period length
+
+### Testing to see if a repeat motif shows stranded occupancy at the read ends
 
 ## Contributing
 

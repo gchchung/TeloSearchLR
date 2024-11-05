@@ -121,7 +121,7 @@ Using the same *C. elegans* library as in example 1, we run TeloSearchLR in "exh
 python TeloSearchLR.py -f SRR7594465.fasta -k 4 -K 20 -t 1000 -m 1 -M 100 -n 6000 -e
 ```
 
-### 5. Testing to see if a specfic motif is repeated at read ends
+### 5. Testing to see if one specfic motif is repeated at read ends
 Suppose you sequence a novel organism (library: NOVEL_ORG.fasta) whose closest known relative has a telomeric motif of TTAGGG. You would like to quickly check if this novel organism also has TTAGGG telomeres. TeloSearchLR offers a "single-motif" mode that allows you to check only one motif to see if it is telomeric or not. 
 
 |required       | description                                                         |
@@ -131,9 +131,10 @@ Suppose you sequence a novel organism (library: NOVEL_ORG.fasta) whose closest k
 |-s             | the repeat motif to test, eg. ```-s TTAGGG``` (STR)                 |
 |-T             | a TideHunter search result file in tabular format, eg. a *TideHunterTable.txt file from an earlier TeloSearchLR run (STR)  |
 
-We require a [TideHunter search output in tabular format](https://github.com/yangao07/TideHunter?tab=readme-ov-file#to-generate-consensus-sequences-in-tabular-format) in this mode. This can come from an independent run of TideHunter, or an earlier run of TeloSearchLR. Here we demonstrate how to check if a 6-mer TTAGGG motif is a telomeric motif by setting -p, -P, and -m all to 6 in TideHunter.
+We require a [TideHunter search output in tabular format](https://github.com/yangao07/TideHunter?tab=readme-ov-file#to-generate-consensus-sequences-in-tabular-format) in this mode. This can come from an independent run of TideHunter, or an earlier run of TeloSearchLR, as long as motif period was included in the TideHunter search. Here we demonstrate how to check if a 6-mer TTAGGG motif is a telomeric motif by setting -p, -P, and -m all to 6 in TideHunter.
 ```bash
 # run TideHunter. TideHunter search result in NOVEL_ORG_6mer_repeats.TideHunterTable.txt
+# the -p 6 -P 6 -m 6 means TideHunter will only search for and display repeats of period 6 (nt)
 TideHunter -f 2 -p 6 -P 6 -m 6 NOVEL_ORG.fasta > NOVEL_ORG_6mer_repeats.TideHunterTable.txt
 
 # run TeloSearchLR

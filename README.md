@@ -77,7 +77,7 @@ python3 TeloSearch.py -f YOUR_LIBRARY.fasta -k 4 -K 20 -m 1 -M 100 -n 6000
 ```
 
 ### Unusually long telomeric repeat motifs
-The two examples above will detect motifs up to 500 bps. To find repeat motifs longer than this, change the -t paramenter to 2* the maximum period you'd like to consider.
+The two examples above will detect motifs up to 500 bps. Typically, telomeres maintained by telomerase have short motifs (<=30 bps), but telomeres maintained by ALT can have very long motifs. To find repeat motifs longer than 500 bps, change the -t paramenter to 2* the maximum period you'd like to consider.
 |paramenter    | description                                                                                                             |
 |--------------|-------------------------------------------------------------------------------------------------------------------------|
 |-t            | the terminal region (in bps) to rank repeat motifs. The *K*-value can be at most 1/2 this *t*-value (INT, default 1000) |

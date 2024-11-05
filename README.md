@@ -44,7 +44,7 @@ python TeloSearch.py -h
 
 ## Usage
 ### Using a library from NCBI Sequence Read Archive
-Download a test dataset - a genomic sequencing library from *Caenorhabditis elegans* generated using PacBio by Yoshimura & al (2019). You will need to have ```fasterq-dump``` from [sra-tools](https://github.com/ncbi/sra-tools) installed.
+Download a test dataset - a genomic sequencing library from *Caenorhabditis elegans* generated using PacBio by [Yoshimura & al (2019)](https://pubmed.ncbi.nlm.nih.gov/31123080/). You will need to have ```fasterq-dump``` from [sra-tools](https://github.com/ncbi/sra-tools) installed.
 ```bash
 fasterq-dump --fasta SRR7594465
 ```

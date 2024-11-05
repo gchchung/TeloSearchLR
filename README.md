@@ -188,7 +188,7 @@ Occupancies are represented in three plots: the occupancy by position at the 5' 
 
 ![image](https://github.com/user-attachments/assets/9a6fcf8c-6899-446f-8217-903f89d16c2f)
 
-We have seen instances with very long telomeres that the true telomeric motif does not have an obvious terminal stranded occupancy ([Chung & al 2024](https://doi.org/10.1101/2024.10.29.617943), Fig. 4). This is because if the telomeres are *longer* than the reads, the telomeric motifs are no longer only found on one or the other end. **Thus, this algorithm works best if sequencing reads are much longer than the average telomere.**
+We have seen instances with very long telomeres that the true telomeric motif does not have an obvious terminal stranded occupancy ([Chung & al 2024](https://doi.org/10.1101/2024.10.29.617943), Fig. 4). This is because if the telomeres are *longer* than the reads, the telomeric motifs are no longer only found on one or the other end. **Thus, this algorithm works best if sequencing reads are much longer than the average telomere in your sample (and telomere lengths are species- and strain-specific).**
 
 If you can identify the terminal stranded occupancy, you can make direct inferences on the library's telomere length. This is because the shape of the occupancy curve reflects the distribution of telomeres captured by the long sequencing reads. Thus, this may be used as a quick way to estimate telomere lengths without specialized protocols (such as in [Karimian & al 2024](https://pubmed.ncbi.nlm.nih.gov/38603523/) or in [Schmidt & al 2024](https://pubmed.ncbi.nlm.nih.gov/38890299/)).
 

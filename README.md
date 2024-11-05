@@ -172,7 +172,7 @@ TeloSearch uses [TideHunter](https://github.com/yangao07/TideHunter) to search f
 
 ![image](https://github.com/user-attachments/assets/fb1650a3-1274-4414-b881-cde8ca0aaf75)
 
-After this initial search, TeloSearchLR ranks the discovered motifs by their total occupancy: the number of bases they occupy in the first and last *t* bps. The motifs are counted together if they are reverse complements (eg. ATTG, GAAT), or if they are cyclical permutations (eg. ATGC, TGCA, GCAT, CATG).
+After this initial search, TeloSearchLR ranks the discovered motifs by their total occupancy: the number of bases they occupy in the first and last *t* bps. The motifs are counted together if they are reverse complements (eg. ATTG, CAAT), or if they are cyclical permutations (eg. ATGC, TGCA, GCAT, CATG).
 
 ![image](https://github.com/user-attachments/assets/616b915b-34ca-4598-8e4f-2f5baa38e6be)
 

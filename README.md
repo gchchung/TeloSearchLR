@@ -223,7 +223,7 @@ to discuss what you would like to change.
 
 ## Please cite
 Chung G, Piano F, Gunsalus KC. 2025. TeloSearchLR: an algorithm to detect novel telomere repeat motifs using long sequencing reads. *G3 (Bethesda)* jkaf062.
- [lin](https://academic.oup.com/g3journal/article/15/6/jkaf062/8102967)).
+ [link](https://academic.oup.com/g3journal/article/15/6/jkaf062/8102967).
 
 ## Contact
 George Chung (gc95@nyu.edu), Research Scientist, New York University
